@@ -36,8 +36,8 @@ KautilyaAI is an AI-powered legal assistant that provides general legal informat
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/yourusername/kautilya-legal-assistant.git
-cd kautilya-legal-assistant
+git clone https://github.com/ArindamHore-Student/KautilyaAI.git
+cd KautilyaAI
 ```
 
 2. **Install dependencies**
@@ -75,7 +75,7 @@ Navigate to [http://localhost:3000](http://localhost:3000) to see the applicatio
 ## 📦 Project Structure
 
 ```
-kautilya-legal-assistant/
+KautilyaAI/
 ├── app/                    # Next.js app directory
 │   ├── api/                # API routes
 │   │   └── chat/           # Chat API endpoint
