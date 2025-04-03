@@ -1,21 +1,20 @@
 /**
- * KautilyaAI - AI Legal Assistant
+ * SadhanaAI - Daily Challenge Bot
  * 
- * This React component implements a chat interface for a legal AI assistant named KautilyaAI.
- * It provides users with general legal information while clearly disclaiming that it's not
- * legal advice. The application uses Google's Gemini API to process questions and generate
- * responses.
+ * This React component implements a chat interface for a daily challenge bot named SadhanaAI.
+ * It provides users with personalized daily tasks and challenges to improve productivity and well-being.
+ * The application uses Google's Gemini API to process requests and generate responses with challenge cards.
  * 
  * Features:
  * - Real-time streaming responses
- * - Example legal questions for user guidance
+ * - Example challenge requests for user guidance
  * - Rate limit handling with countdown timer
- * - Clear disclaimers about limitations of AI legal information
+ * - Context cards for challenges and tasks
  * - Support for keyboard navigation (Enter to submit)
  * - Mobile-responsive design
  * 
  * @author Original implementation
- * @modified For KautilyaAI Legal Assistant
+ * @modified For SadhanaAI Daily Challenge Bot
  * @license MIT
  */
 
@@ -28,7 +27,7 @@ import { Input } from "@/components/ui/input"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Scale, Send, Loader2, AlertCircle, Info } from "lucide-react"
+import { Calendar, Send, Loader2, AlertCircle, Info } from "lucide-react"
 import { v4 as uuidv4 } from 'uuid'
 import { nanoid } from 'nanoid'
 
@@ -41,23 +40,23 @@ interface Message {
   content: string;
 }
 
-// Standard legal disclaimer message
-const LEGAL_DISCLAIMER = "This AI assistant provides general information only and not legal advice. Always consult with a qualified attorney for specific legal matters.";
+// Standard challenge disclaimer message
+const CHALLENGE_DISCLAIMER = "These challenges are AI-generated suggestions. Choose challenges that align with your abilities and interests.";
 
-// Non-legal response pattern to detect
-const NON_LEGAL_RESPONSE = "I'm a legal advisor focused exclusively on providing general legal information. I cannot answer questions outside the legal domain.";
+// Non-challenge response pattern to detect
+const NON_CHALLENGE_RESPONSE = "I'm a challenge bot focused on providing personalized daily tasks and challenges. I cannot answer questions outside this domain.";
 
 /**
- * Main component for the KautilyaAI Legal Assistant chat interface
+ * Main component for the SadhanaAI Daily Challenge Bot chat interface
  */
-export default function KautilyaAILegalChat() {
+export default function SadhanaAIDailyChallengeBot() {
   // State for storing chat messages
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
       role: "assistant",
       content:
-        "Hello, I'm KautilyaAI, your AI legal assistant. How can I help you today? Please note that I provide general information only, not professional legal advice. Feel free to ask questions about laws, legal concepts, rights, or procedures.",
+        "Hello, I'm SadhanaAI, your daily challenge bot. How can I help you today? I can suggest personalized daily challenges for productivity, wellness, learning, or skill development. Just let me know what type of challenges you're interested in!",
     },
   ]);
   const [input, setInput] = useState("");
@@ -110,17 +109,17 @@ export default function KautilyaAILegalChat() {
     };
   }, [retryTimer]);
 
-  // Examples of legal questions to help users
-  const legalExamples = [
-    "What are my rights as a tenant?",
-    "How does copyright protection work?",
-    "What's the difference between a felony and misdemeanor?",
-    "How do I respond to a small claims lawsuit?",
+  // Examples of challenge requests to help users
+  const challengeExamples = [
+    "Give me a productivity challenge for today",
+    "Suggest a 7-day fitness challenge",
+    "I need a mental wellness challenge",
+    "What's a good learning challenge for beginners?",
   ];
 
   /**
-   * Handle clicking an example question
-   * @param example The example question text
+   * Handle clicking an example challenge
+   * @param example The example challenge text
    */
   const handleExampleClick = (example: string) => {
     setInput(example);
@@ -265,12 +264,12 @@ export default function KautilyaAILegalChat() {
   };
 
   /**
-   * Helper function to check if a message is a non-legal response
+   * Helper function to check if a message is a non-challenge response
    * @param content The message content to check
-   * @returns True if the message is a non-legal response
+   * @returns True if the message is a non-challenge response
    */
-  const isNonLegalResponse = (content: string): boolean => {
-    return content.includes(NON_LEGAL_RESPONSE);
+  const isNonChallengeResponse = (content: string): boolean => {
+    return content.includes(NON_CHALLENGE_RESPONSE);
   };
 
   return (
@@ -278,10 +277,10 @@ export default function KautilyaAILegalChat() {
       <Card className="w-full max-w-5xl h-[85vh] flex flex-col shadow-lg overflow-hidden">
         <CardHeader className="bg-slate-100 rounded-t-lg px-6 py-4">
           <div className="flex items-center">
-            <Scale className="h-6 w-6 mr-3 text-slate-700" />
+            <Calendar className="h-6 w-6 mr-3 text-slate-700" />
             <div>
-              <CardTitle className="text-slate-800 text-xl">KautilyaAI</CardTitle>
-              <CardDescription>Ask questions about general legal matters</CardDescription>
+              <CardTitle className="text-slate-800 text-xl">SadhanaAI</CardTitle>
+              <CardDescription>Your personalized daily challenge bot</CardDescription>
             </div>
           </div>
         </CardHeader>
@@ -289,7 +288,7 @@ export default function KautilyaAILegalChat() {
         <div className="px-6 pt-3">
           <Alert className="bg-amber-50 border-amber-200">
             <AlertDescription className="text-amber-800 text-sm">
-              {LEGAL_DISCLAIMER}
+              {CHALLENGE_DISCLAIMER}
             </AlertDescription>
           </Alert>
           
@@ -309,7 +308,7 @@ export default function KautilyaAILegalChat() {
                 <div key={message.id} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
                   {message.role === "assistant" && (
                     <Avatar className="h-8 w-8 mr-2 flex-shrink-0">
-                      <AvatarFallback className="bg-slate-200 text-slate-700">KA</AvatarFallback>
+                      <AvatarFallback className="bg-slate-200 text-slate-700">SA</AvatarFallback>
                     </Avatar>
                   )}
 
@@ -317,15 +316,15 @@ export default function KautilyaAILegalChat() {
                     className={`rounded-lg p-3 ${
                       message.role === "user" 
                         ? "bg-slate-700 text-white max-w-[75%]" 
-                        : isNonLegalResponse(message.content)
+                        : isNonChallengeResponse(message.content)
                           ? "bg-blue-50 border border-blue-200 text-slate-800 max-w-[80%]"
                           : "bg-slate-100 text-slate-800 max-w-[80%]"
                     }`}
                   >
-                    {isNonLegalResponse(message.content) && (
+                    {isNonChallengeResponse(message.content) && (
                       <div className="flex items-center mb-2 text-blue-500">
                         <Info className="h-4 w-4 mr-1" />
-                        <span className="text-xs font-medium">NON-LEGAL QUERY DETECTED</span>
+                        <span className="text-xs font-medium">NON-CHALLENGE QUERY DETECTED</span>
                       </div>
                     )}
                     <div className="whitespace-pre-wrap break-words">{message.content}</div>
@@ -341,7 +340,7 @@ export default function KautilyaAILegalChat() {
               {isLoading && messages[messages.length - 1]?.role !== "assistant" && (
                 <div className="flex justify-start">
                   <Avatar className="h-8 w-8 mr-2 flex-shrink-0">
-                    <AvatarFallback className="bg-slate-200 text-slate-700">KA</AvatarFallback>
+                    <AvatarFallback className="bg-slate-200 text-slate-700">SA</AvatarFallback>
                   </Avatar>
                   <div className="bg-slate-100 text-slate-800 rounded-lg p-3 flex items-center">
                     <Loader2 className="h-4 w-4 animate-spin mr-2" />
@@ -357,7 +356,7 @@ export default function KautilyaAILegalChat() {
         <div className="px-6 pb-2">
           <div className="flex flex-wrap gap-2 text-xs">
             <span className="text-slate-500 mr-1">Try asking about:</span>
-            {legalExamples.map((example, index) => (
+            {challengeExamples.map((example, index) => (
               <button
                 key={index}
                 onClick={() => handleExampleClick(example)}
@@ -380,7 +379,7 @@ export default function KautilyaAILegalChat() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyPress}
-                  placeholder="Type your question here..."
+                  placeholder="Ask for a challenge or task..."
                   className="w-full flex-grow py-3 px-4 text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   disabled={isLoading || !!retryTimer}
                   autoFocus
@@ -412,8 +411,7 @@ export default function KautilyaAILegalChat() {
               </div>
               
               <p>
-                Note: This AI provides general legal information only, not specific advice.
-                Always consult with a qualified attorney for your specific situation.
+                Note: These challenges are personalized suggestions. Choose activities that align with your capabilities and interests.
               </p>
             </div>
           </div>

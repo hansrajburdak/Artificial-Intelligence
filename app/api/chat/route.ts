@@ -1,13 +1,13 @@
 /**
- * KautilyaAI - AI Legal Assistant API Route
+ * SadhanaAI - Daily Challenge Bot API Route
  * 
- * This API route handles communication with the Google Gemini API for the KautilyaAI legal assistant.
- * It processes user messages, determines if they are legal questions, and formats interactions
+ * This API route handles communication with the Google Gemini API for the SadhanaAI challenge bot.
+ * It processes user messages, determines if they are challenge-related queries, and formats interactions
  * with the Gemini model to ensure proper context and response handling.
  * 
  * The route includes:
  * - Rate limit detection and handling
- * - Legal question validation
+ * - Challenge query validation
  * - System prompt incorporation via chat history
  * - Streaming response capabilities
  * 
@@ -28,29 +28,28 @@ interface ChatMessage {
 }
 
 /**
- * Validates if a message is likely a legal question based on keywords
+ * Validates if a message is likely a challenge query based on keywords
  * 
  * @param text - The text to analyze
- * @returns boolean - True if the text contains legal keywords
+ * @returns boolean - True if the text contains challenge-related keywords
  */
-function isLegalQuestion(text: string): boolean {
-  const legalKeywords = [
-    'law', 'legal', 'right', 'rights', 'court', 'judge', 'attorney', 'lawyer', 'lawsuit',
-    'contract', 'agreement', 'breach', 'liability', 'tort', 'compensation', 'damages',
-    'crime', 'criminal', 'offense', 'prosecution', 'defendant', 'plaintiff', 'sue', 'sued',
-    'divorce', 'custody', 'property', 'estate', 'will', 'testament', 'inheritance',
-    'tenant', 'landlord', 'lease', 'eviction', 'employment', 'discrimination',
-    'patent', 'copyright', 'trademark', 'intellectual property', 'settlement',
-    'regulation', 'statute', 'legislation', 'constitution', 'jurisdiction',
-    'insurance', 'claim', 'dispute', 'arbitration', 'mediation', 'license',
-    'debt', 'bankruptcy', 'tax', 'immigration', 'visa', 'citizenship'
+function isChallengeQuery(text: string): boolean {
+  const challengeKeywords = [
+    'challenge', 'task', 'goal', 'habit', 'routine', 'activity', 'productivity',
+    'wellness', 'fitness', 'health', 'exercise', 'workout', 'diet', 'nutrition',
+    'meditation', 'mindfulness', 'mental', 'learning', 'skill', 'hobby', 'project',
+    'daily', 'weekly', 'monthly', 'morning', 'evening', 'work', 'personal',
+    'creative', 'art', 'writing', 'reading', 'social', 'career', 'development',
+    'growth', 'self-improvement', 'motivation', 'discipline', 'consistency',
+    'focus', 'time management', 'stress', 'anxiety', 'sleep', 'habit tracking',
+    'goals', 'targets', 'milestones', 'progress', 'achievement'
   ];
 
   // Convert to lowercase for case-insensitive matching
   const lowerText = text.toLowerCase();
   
-  // Check if any legal keyword is present
-  return legalKeywords.some(keyword => lowerText.includes(keyword.toLowerCase()));
+  // Check if any challenge keyword is present
+  return challengeKeywords.some(keyword => lowerText.includes(keyword.toLowerCase()));
 }
 
 /**
@@ -78,11 +77,11 @@ export async function POST(req: Request) {
     // Get the last user message (from the end of the array)
     const lastUserMessage = messages[messages.length - 1 - lastUserMessageIndex]
     
-    // Check if it's a legal question - but we'll let the model handle all questions
-    const isLegal = isLegalQuestion(lastUserMessage.content)
+    // Check if it's a challenge-related query
+    const isChallenge = isChallengeQuery(lastUserMessage.content)
 
-    // Simplified system message - more compatible with Gemini API
-    const systemPromptText = "You are KautilyaAI, an AI legal assistant. Provide general legal information only, not specific advice. Always recommend consulting a qualified attorney for specific matters. For non-legal questions, respond with: 'I'm KautilyaAI, a legal advisor focused exclusively on providing general legal information. I cannot answer questions outside the legal domain.'";
+    // System prompt for our daily challenge bot
+    const systemPromptText = "You are SadhanaAI, a daily challenge bot. You provide personalized challenges and tasks to help users improve productivity, wellness, learning, or skill development. Format your responses with clear, actionable challenges presented as context cards. For non-challenge questions, respond with: 'I'm a challenge bot focused on providing personalized daily tasks and challenges. I cannot answer questions outside this domain.'";
 
     // Empty chat history to start with
     let chatHistory = []
@@ -90,7 +89,7 @@ export async function POST(req: Request) {
     // Start history with a system message (as a model message)
     chatHistory.push({
       role: "user",
-      parts: [{ text: "You are KautilyaAI, an AI legal assistant. Please acknowledge your role." }]
+      parts: [{ text: "You are SadhanaAI, a daily challenge bot. Please acknowledge your role." }]
     });
     
     chatHistory.push({
@@ -131,7 +130,7 @@ export async function POST(req: Request) {
     // For debugging
     console.log("Chat history:", JSON.stringify(chatHistory))
     console.log("Last user message:", lastUserMessage.content)
-    console.log("Is legal question:", isLegal)
+    console.log("Is challenge query:", isChallenge)
     
     // Create a chat session with properly formatted history
     const chat = model.startChat({
