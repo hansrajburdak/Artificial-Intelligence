@@ -1,6 +1,8 @@
 {
-  "name": "my-v0-project",
+  "name": "sadhanaai-challenge-bot",
   "version": "0.1.0",
+  "description": "AI-powered daily challenge bot providing personalized tasks and challenges",
+  "author": "SadhanaAI Team",
   "private": true,
   "scripts": {
     "dev": "next dev",

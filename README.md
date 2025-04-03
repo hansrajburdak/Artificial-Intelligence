@@ -1,23 +1,23 @@
-# KautilyaAI - AI Legal Assistant
+# SadhanaAI - Daily Challenge Bot
 
-![KautilyaAI Legal Assistant](https://img.shields.io/badge/KautilyaAI-Legal%20Assistant-blue)
+![SadhanaAI Challenge Bot](https://img.shields.io/badge/SadhanaAI-Challenge%20Bot-green)
 ![Next.js](https://img.shields.io/badge/Next.js-14-000000?logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-4.9-3178C6?logo=typescript)
 ![Google Gemini](https://img.shields.io/badge/Google-Gemini%20API-4285F4?logo=google)
 
-KautilyaAI is an AI-powered legal assistant that provides general legal information and guidance on various legal topics. Built with Next.js and Google's Gemini 1.5 Pro API, it features a clean, intuitive chat interface for users to ask legal questions and receive informative responses.
+SadhanaAI is an AI-powered daily challenge bot that provides personalized challenges and tasks to help improve productivity, wellness, learning, and skill development. Built with Next.js and Google's Gemini 1.5 Pro API, it features a clean, intuitive chat interface for users to request and receive daily challenges with context cards.
 
-> ⚠️ **Disclaimer**: KautilyaAI provides general legal information only, not specific legal advice. Always consult with a qualified attorney for your specific legal matters.
+> ⚠️ **Disclaimer**: SadhanaAI provides AI-generated suggestions. Choose challenges that align with your abilities and interests.
 
 ## 🌟 Features
 
-- **Intuitive Chat Interface**: Clean, user-friendly design optimized for asking legal questions
+- **Intuitive Chat Interface**: Clean, user-friendly design optimized for requesting challenges
 - **Real-time Streaming Responses**: See AI responses as they're generated, character by character
-- **Example Questions**: Pre-populated examples to help users get started
+- **Example Prompts**: Pre-populated examples to help users get started
 - **Rate Limit Handling**: Graceful handling of API rate limits with countdown timers
-- **Legal Question Detection**: Identifies legal vs. non-legal questions
+- **Challenge Query Detection**: Identifies challenge-related vs. non-challenge queries
 - **Mobile Responsive**: Fully responsive design that works across all devices
-- **Keyboard Navigation**: Submit questions using the Enter key for convenience
+- **Keyboard Navigation**: Submit requests using the Enter key for convenience
 
 ## 🚀 Tech Stack
 
@@ -36,8 +36,8 @@ KautilyaAI is an AI-powered legal assistant that provides general legal informat
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/ArindamHore-Student/KautilyaAI.git
-cd KautilyaAI
+git clone https://github.com/ArindamHore-Student/SadhanaAI.git
+cd SadhanaAI
 ```
 
 2. **Install dependencies**
@@ -75,12 +75,12 @@ Navigate to [http://localhost:3000](http://localhost:3000) to see the applicatio
 ## 📦 Project Structure
 
 ```
-KautilyaAI/
+SadhanaAI/
 ├── app/                    # Next.js app directory
 │   ├── api/                # API routes
 │   │   └── chat/           # Chat API endpoint
 │   ├── components/         # UI components
-│   │   └── page.tsx            # Main chat interface
+│   │   └── page.tsx        # Main chat interface
 │   └── layout.tsx          # App layout
 ├── components/             # Shared components
 │   ├── ui/                 # UI components
@@ -92,11 +92,11 @@ KautilyaAI/
 
 ## 🤖 How It Works
 
-1. **User Input**: User enters a legal question in the chat interface
-2. **API Request**: The question is sent to the API route
-3. **Gemini Processing**: Google's Gemini 1.5 Pro model processes the question with legal context
+1. **User Input**: User enters a challenge request in the chat interface
+2. **API Request**: The request is sent to the API route
+3. **Gemini Processing**: Google's Gemini 1.5 Pro model processes the request with challenge context
 4. **Streaming Response**: The response is streamed back to the UI in real-time
-5. **Display**: The response appears in the chat interface
+5. **Display**: The challenge appears in the chat interface as context cards
 
 ## 🚢 Deployment
 
@@ -117,7 +117,7 @@ vercel
 The application uses Google's Gemini 1.5 Pro API to generate responses. The API route is set up to handle:
 
 - Chat message formatting
-- Legal question validation
+- Challenge query validation
 - Rate limit handling
 - Streaming responses
 
