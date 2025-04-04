@@ -42,7 +42,16 @@ function isChallengeQuery(text: string): boolean {
     'creative', 'art', 'writing', 'reading', 'social', 'career', 'development',
     'growth', 'self-improvement', 'motivation', 'discipline', 'consistency',
     'focus', 'time management', 'stress', 'anxiety', 'sleep', 'habit tracking',
-    'goals', 'targets', 'milestones', 'progress', 'achievement'
+    'goals', 'targets', 'milestones', 'progress', 'achievement',
+
+    'productivity hacks', 'lifehack', 'journaling', 'reflection', 'vision', 'planning',
+    'goal setting', 'tracking', 'resilience', 'grit', 'inspiration', 'checklist',
+    'self-care', 'affirmations', 'clarity', 'breathing', 'routine building',
+    'energy boost', 'positivity', 'clean eating', 'hydration', 'step count',
+    'walking', 'running', 'stretching', 'yoga', 'bodyweight', 'strength', 'calmness',
+    'balance', 'mindset', 'consumption', 'detox', 'routine design', 'habit loop',
+    'lifestyle', 'commitment', 'persistence', 'accountability', 'feedback',
+    'goal review', 'win', 'micro-goals', 'streak', 'habit stacking', 'keystone habit'
   ];
 
   // Convert to lowercase for case-insensitive matching
