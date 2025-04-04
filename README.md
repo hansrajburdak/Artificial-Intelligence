@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # SadhanaAI - Daily Challenge Bot
 
 ![SadhanaAI Challenge Bot](https://img.shields.io/badge/SadhanaAI-Challenge%20Bot-green)
@@ -147,3 +148,7 @@ Built with ❤️ using Next.js and Google Gemini API
 # Artificial-Intelligence
 Daily Challenge Bot
 >>>>>>> e64340d6add56ccec26a385da1a511ab29fe0095
+=======
+# Artificial-Intelligence
+Challenge Bot
+>>>>>>> 563a49e8a20d380eee56f321e6de9ce5a04e76b2
